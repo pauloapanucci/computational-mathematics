@@ -1,0 +1,6 @@
+#! /usr/bin/gnuplot
+
+name=system("echo $name")
+set title name
+plot "sincos.dat" using 2 title 'Sin' with lines, "sincos.dat" using 3 title 'RealSin' with lines, "sincos.dat" using 4 title 'Cos' with lines, "sincos.dat" using 5 title 'RealCos' with lines
+pause -1
