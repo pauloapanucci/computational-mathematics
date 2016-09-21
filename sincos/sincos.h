@@ -1,9 +1,7 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include <math.h>
 
 double PI = 3.1415926535897932;
-double factor;
+double FA = 0.0174532925199432;
 
 double SA = 0.1666666666666666;
 double SB = 0.0083333333333333;
@@ -24,7 +22,7 @@ double fcos(double deg);
 
 double fsin(double deg){
   deg = fmod(deg, 360.0);
-  double x = deg * factor;
+  double x = deg * FA;
   if (deg > 270) {
     return -1 * fsin(deg - 180);
   } else if (deg == 270) {
@@ -66,7 +64,7 @@ double fsin(double deg){
 
 double fcos(double deg){
   deg = fmod(deg, 360.0);
-  double x = deg * factor;
+  double x = deg * FA;
   if (deg > 270) {
     return -1 * fcos(deg - 180);
   } else if (deg == 270) {
@@ -101,21 +99,4 @@ double fcos(double deg){
   } else if (deg == 0) {
     return 1;
   }
-}
-
-int main(){
-  printf("PI = %ld\n", PI);
-  factor = PI / 180;
-  printf("FACTOR = %ld\n", factor);
-  FILE * data = fopen("sincos.dat", "w");
-  for (size_t i = 0; i < 540; i++) {
-    double nsin = fsin(i);
-    double ncos = fcos(i);
-    double realsin = sin(i * factor);
-    double realcos = cos(i * factor);
-    printf("ANGLE %3d; SIN = %.12lf; RSIN = %.12lf; ERR = %.12lf\n", i, nsin, realsin, realsin - nsin);
-    fprintf(data, "%i\t%.12lf\t%.12lf\t%.12lf\t%.12lf\n", i, nsin, realsin, ncos, realcos);
-  }
-  fclose(data);
-  return 0;
 }
