@@ -23,7 +23,7 @@ double fsin(double deg);
 double fcos(double deg);
 
 double fsin(double deg){
-  deg = remainder(deg, 360);
+  deg = fmod(deg, 360.0);
   double x = deg * factor;
   if (deg > 270) {
     return -1 * fsin(deg - 180);
@@ -38,7 +38,9 @@ double fsin(double deg){
   } else if (deg == 90) {
     return 1;
   } else if (deg > 0) {
-    if (deg > 45) return fcos(90 - deg);
+    if (deg > 45){
+      return fcos(90 - deg);
+    }
     else {
       double sqr = x * x;
       double res;
@@ -58,13 +60,12 @@ double fsin(double deg){
       return res;
     }
   } else if (deg == 0) {
-    printf("era cilada!\n");
     return 0;
   }
 }
 
 double fcos(double deg){
-  deg = remainder(deg, 360);
+  deg = fmod(deg, 360.0);
   double x = deg * factor;
   if (deg > 270) {
     return -1 * fcos(deg - 180);
