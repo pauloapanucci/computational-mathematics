@@ -11,8 +11,8 @@ int main(){
     double ncos = fcos(i);
     double realsin = sin(i * FA);
     double realcos = cos(i * FA);
-    printf("ANGLE %3d; SIN = %.12lf; RSIN = %.12lf; ERR = %.12lf\n", i, nsin, realsin, realsin - nsin);
-    fprintf(data, "%i\t%.12lf\t%.12lf\t%.12lf\t%.12lf\n", i, nsin, realsin, ncos, realcos);
+    printf("ANGLE %3d; SIN = %.16lf; RSIN = %.16lf; ERR = %.16lf\n", i, nsin, realsin, realsin - nsin);
+    fprintf(data, "%i\t%.16lf\t%.16lf\t%.16lf\t%.16lf\n", i, nsin, realsin, ncos, realcos);
   }
   fclose(data);
 

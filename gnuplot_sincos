@@ -1,6 +1,4 @@
 #! /usr/bin/gnuplot
-
-name=system("echo $name")
-set title name
+set title 'Seno & Cosseno (Série de Taylor)'
 plot "sincos.dat" using 2 title 'Seno Programado' with lines, "sincos.dat" using 3 title 'Seno da Linguagem C' with lines, "sincos.dat" using 4 title 'Cosseno Programado' with lines, "sincos.dat" using 5 title 'Cosseno da Linguagem C' with lines
 pause -1

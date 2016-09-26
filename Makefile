@@ -1,4 +1,4 @@
-.PHONY=conversion
+.PHONY: conversion sincos
 
 all: conversion sincos
 
