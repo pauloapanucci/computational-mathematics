@@ -1,4 +1,26 @@
-#! /usr/bin/gnuplot
-set title 'Seno & Cosseno (Série de Taylor)'
-plot "sincos.dat" using 2 title 'Seno Programado' with lines, "sincos.dat" using 3 title 'Seno da Linguagem C' with lines, "sincos.dat" using 4 title 'Cosseno Programado' with lines, "sincos.dat" using 5 title 'Cosseno da Linguagem C' with lines
-pause -1
+#! /usr/local/bin/gnuplot
+
+set xtics 90
+set ytics 1
+
+set terminal svg enhanced font "Helvetica,20"
+
+set title 'Seno'
+set output "sinvsin.svg"
+plot "sincos.dat" using 2 title 'taylor sin' with lines, "sincos.dat" using 3 title 'cmath sin' with lines
+
+set title 'Cosseno'
+set output "cosvcos.svg"
+plot "sincos.dat" using 4 title 'taylor cos' with lines, "sincos.dat" using 5 title 'cmath cos' with lines
+
+set title 'Seno e Cosseno'
+set output "sincosvsincos.svg"
+plot "sincos.dat" using 2 title 'taylor sin' with lines, "sincos.dat" using 3 title 'cmath sin' with lines, "sincos.dat" using 4 title 'taylor cos' with lines, "sincos.dat" using 5 title 'cmath cos' with lines
+
+set title 'Erro Seno'
+set output "errsin.svg"
+plot "sincos.dat" using 6 title 'sin5' with lines, "sincos.dat" using 10 title 'sin6' with lines, "sincos.dat" using 14 title 'sin7' with lines
+
+set title 'Erro Cosseno'
+set output "errcos.svg"
+plot "sincos.dat" using 19 title 'cos5' with lines, "sincos.dat" using 23 title 'cos6' with lines, "sincos.dat" using 27 title 'cos7' with lines
